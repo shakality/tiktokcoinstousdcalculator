@@ -37,6 +37,34 @@ const Home: React.FC = () => {
   ];
 
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [shareStatus, setShareStatus] = useState<'idle' | 'success'>('idle');
+
+  const handleShare = async () => {
+    const numCoins = Number(coins) || 0;
+    const shareData = {
+      title: 'TikTok Coins to USD Calculator',
+      text: `I just calculated that ${numCoins.toLocaleString()} TikTok Coins are worth $${creatorEarnings.toLocaleString()} for creators! Check it out:`,
+      url: window.location.href,
+    };
+
+    console.log('Attempting to share:', shareData);
+
+    try {
+      if (navigator.share) {
+        console.log('Using navigator.share');
+        await navigator.share(shareData);
+      } else {
+        console.log('navigator.share not available, using clipboard');
+        await navigator.clipboard.writeText(window.location.href);
+        setShareStatus('success');
+        setTimeout(() => setShareStatus('idle'), 3000);
+      }
+    } catch (err) {
+      console.error('Error sharing:', err);
+      // Fallback for browsers with strict clipboard policies
+      setShareStatus('idle');
+    }
+  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -204,16 +232,63 @@ const Home: React.FC = () => {
         {/* Sidebar */}
         <div className="lg:col-span-4 bg-white p-8 md:p-12">
           <div className="sticky top-28 space-y-12">
-            <div className="bg-ink p-10 razor-card relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-neon/10 blur-3xl rounded-full" />
-              <h3 className="text-xl font-extrabold text-white uppercase tracking-tighter italic mb-6">Growth_Protocol</h3>
-              <p className="font-mono text-xs text-white/40 leading-relaxed mb-10">
-                [01] Understanding your earnings is the first step to becoming a professional creator.<br/><br/>
-                [02] Use our tool to track your progress and set new goals!
-              </p>
-              <button className="w-full bg-neon text-ink font-extrabold py-4 uppercase tracking-widest text-xs hover:bg-white transition-all active:scale-[0.98]">
-                Execute_Share
-              </button>
+            <div className="bg-ink p-10 razor-card relative overflow-hidden group border border-white/5">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-neon/5 blur-3xl rounded-full group-hover:bg-neon/10 transition-colors duration-500" />
+              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-neon/5 blur-3xl rounded-full" />
+              
+              <div className="relative z-10">
+                <h3 className="text-xl font-extrabold text-white uppercase tracking-tighter italic mb-8 flex items-center gap-3">
+                  <span className="w-2 h-2 bg-neon animate-pulse" />
+                  Growth_Protocol
+                </h3>
+                
+                <div className="space-y-6 mb-10">
+                  <div className="flex gap-4">
+                    <span className="font-mono text-[10px] text-neon/60 mt-1">[01]</span>
+                    <p className="font-mono text-xs text-white/60 leading-relaxed">
+                      Understanding your earnings is the first step to becoming a professional creator.
+                    </p>
+                  </div>
+                  <div className="flex gap-4">
+                    <span className="font-mono text-[10px] text-neon/60 mt-1">[02]</span>
+                    <p className="font-mono text-xs text-white/60 leading-relaxed">
+                      Use our tool to track your progress and set new goals!
+                    </p>
+                  </div>
+                </div>
+
+                <button 
+                  onClick={handleShare}
+                  className={`w-full font-extrabold py-4 uppercase tracking-widest text-[10px] transition-all active:scale-[0.98] border relative overflow-hidden ${
+                    shareStatus === 'success' 
+                      ? 'bg-neon text-ink border-neon' 
+                      : 'bg-neon text-ink border-neon hover:bg-transparent hover:text-neon'
+                  }`}
+                >
+                  <AnimatePresence mode="wait">
+                    {shareStatus === 'success' ? (
+                      <motion.span
+                        key="success"
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        exit={{ y: -20, opacity: 0 }}
+                        className="flex items-center justify-center gap-2"
+                      >
+                        Link_Copied_To_Clipboard
+                      </motion.span>
+                    ) : (
+                      <motion.span
+                        key="idle"
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        exit={{ y: -20, opacity: 0 }}
+                      >
+                        Execute_Share
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
+                </button>
+              </div>
             </div>
 
             <div className="bg-ghost border border-ink/10 p-8 razor-card">
