@@ -7,7 +7,7 @@ const About: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       <Helmet>
-        <title>TikTok.Lab // Mission_Brief</title>
+        <title>TikTok Coins // Mission_Brief</title>
         <meta name="description" content="Learn about our mission to provide transparent and accurate financial tools for the TikTok creator community." />
       </Helmet>
 

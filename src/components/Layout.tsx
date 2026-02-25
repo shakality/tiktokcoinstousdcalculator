@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Calculator, Info, Mail, Shield, FileText } from 'lucide-react';
+import { Menu, X, Coins, Info, Mail, Shield, FileText } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -8,7 +8,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const location = useLocation();
 
   const navLinks = [
-    { name: 'Home', path: '/', icon: <Calculator size={18} /> },
+    { name: 'Home', path: '/', icon: <Coins size={18} /> },
     { name: 'About', path: '/about', icon: <Info size={18} /> },
     { name: 'Contact', path: '/contact', icon: <Mail size={18} /> },
     { name: 'Privacy', path: '/privacy-policy', icon: <Shield size={18} /> },
@@ -24,9 +24,9 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             <div className="flex items-center">
               <Link to="/" className="flex items-center gap-3 group">
                 <div className="bg-ink p-2 rounded-sm text-neon transition-transform duration-300 group-hover:rotate-90">
-                  <Calculator size={20} strokeWidth={2.5} />
+                  <Coins size={20} strokeWidth={2.5} />
                 </div>
-                <span className="font-extrabold text-xl tracking-tighter uppercase italic">TikTok.Lab</span>
+                <span className="font-extrabold text-xl tracking-tighter uppercase italic">TikTok Coins</span>
               </Link>
             </div>
 
@@ -95,9 +95,9 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             <div className="md:col-span-5">
               <Link to="/" className="flex items-center gap-3 mb-6">
                 <div className="bg-ink p-1.5 rounded-sm text-neon">
-                  <Calculator size={18} />
+                  <Coins size={18} />
                 </div>
-                <span className="font-extrabold text-lg tracking-tighter uppercase italic">TikTok.Lab</span>
+                <span className="font-extrabold text-lg tracking-tighter uppercase italic">TikTok Coins</span>
               </Link>
               <p className="text-sm font-mono text-ink/40 leading-relaxed max-w-xs">
                 [SYSTEM_STATUS: OPERATIONAL]<br/>
@@ -133,7 +133,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           </div>
           <div className="mt-16 pt-8 border-t border-ink/5 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="font-mono text-[10px] text-ink/30 uppercase tracking-widest">
-              &copy; {new Date().getFullYear()} TikTok.Lab // All rights reserved.
+              &copy; {new Date().getFullYear()} TikTok Coins // All rights reserved.
             </p>
             <div className="flex gap-4 font-mono text-[10px] text-ink/30 uppercase tracking-widest">
               <span>v2.0.26</span>

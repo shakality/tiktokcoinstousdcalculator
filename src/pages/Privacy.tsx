@@ -5,8 +5,8 @@ const Privacy: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       <Helmet>
-        <title>TikTok.Lab // Privacy_Protocol</title>
-        <meta name="description" content="Data handling and privacy protocols for the TikTok.Lab environment." />
+        <title>TikTok Coins // Privacy_Protocol</title>
+        <meta name="description" content="Data handling and privacy protocols for the TikTok Coins environment." />
       </Helmet>
 
       <div className="bg-white p-10 md:p-16 razor-card border border-ink/10 prose prose-neutral max-w-none font-mono text-sm text-ink/60">
@@ -16,7 +16,7 @@ const Privacy: React.FC = () => {
         <section className="mb-12">
           <h2 className="text-ink font-bold uppercase tracking-widest text-xs mb-4">// 01_Introduction</h2>
           <p>
-            Welcome to TikTok.Lab. We respect your privacy and are committed to protecting your personal data. This protocol will inform you as to how we look after your data when you visit our environment.
+            Welcome to TikTok Coins. We respect your privacy and are committed to protecting your personal data. This protocol will inform you as to how we look after your data when you visit our environment.
           </p>
         </section>
 

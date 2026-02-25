@@ -12,8 +12,8 @@ const Contact: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       <Helmet>
-        <title>TikTok.Lab // Support_Channel</title>
-        <meta name="description" content="Direct communication channel for TikTok.Lab support and inquiries." />
+        <title>TikTok Coins // Support_Channel</title>
+        <meta name="description" content="Direct communication channel for TikTok Coins support and inquiries." />
       </Helmet>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-1 bg-ink/5 border border-ink/10">
